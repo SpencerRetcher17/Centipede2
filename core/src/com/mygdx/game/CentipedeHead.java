@@ -48,20 +48,7 @@ public class CentipedeHead extends Sprite {
             previousState=State.LEFT;
             speed=10f;
 
-      //  frames2=new TextureRegion[frames.length];
-
-       // for(int i=0;i<4;i++)
-        //{
-          //  frames[i]=splitTiles[0][i];
-            //frames[i+4]=splitTiles[1][i];
-
-        //}
-        //for(int j=0;j<frames2.length;j++)
-       //{
-         //  frames2[j]=frames[j];
-       //frames2[j].flip(true, false);
-
-
+   
 
 
 
@@ -77,7 +64,6 @@ public class CentipedeHead extends Sprite {
 
         float delta = Gdx.graphics.getDeltaTime();
         stateTime += Gdx.graphics.getDeltaTime() * 15;
-        //      Gdx.app.log(" "+getX()+" "+getY()+" "+delta,"hello");
 
 
         if (stateTime > 7) {
@@ -90,55 +76,7 @@ public class CentipedeHead extends Sprite {
 
             setPosition(getX() - speed* delta,getY());
 
-         //   for (int j = list.size()-1; j>0;j--) {
-         //       if (list.size()>1) {
-           //         //  centipede.getCentipedeList().get(0).setPosition(centipede.getCentipedeList().get(0).getX() - centipede.getCentipedeList().get(0).getSpeed() * delta, centipede.getCentipedeList().get(0).getY());
-             //       list.get(j).setPosition(list.get(j-1).getX(), list.get(j-1).getY());
-
-
-             //   }
-           // }
-
-                // setPosition(getX() - speed * delta, getY());
-
-                //for(int i=0;i<list.size();i++)
-                // {
-                //    if(list.size()==1)
-                // {
-                //  list.get(0).setPosition(getX() - speed * delta, getY());
-
-                //  }
-                // else {
-//
-                //    list.get(i).setPosition(list.get(0).getX() + i + 1, getY());
-                //  }
-
-
-                // setX(getX()-speed);
-
-                //     list.get(0).setPosition(getX() - speed * delta, getY());
-
-                //  for(int i=list.size();i>=0;i--)
-                //  {
-                //     list.get(i).setPosition(list.get(0).getX()+i,getY());
-
-                //  }
-
-
-                //     {
-                //         setX(getX()+1);
-                //      }
-
-                //  }
-
-                //  for(int i=0;i<frames.length;i++)
-                //   {
-                //      frames[i].flip(frames[i].isFlipX(), frames[i].isFlipY());
-
-                //  }
-                //currentFrame.flip(false,false);
-                //    currentFrame.flip(currentFrame.isFlipX(), currentFrame.isFlipY());
-
+         
                 currentFrame = animation.getKeyFrame(stateTime);
 
                 if (getX() < 0) {
@@ -150,47 +88,10 @@ public class CentipedeHead extends Sprite {
             if (currentState == State.RIGHT) {
 
             setPosition(getX()+speed*delta,getY());
-            //    list.get(0).setPosition(list.get(0).getX() + speed * delta, list.get(0).getY());
-
-             //   for (int j = 0; j < list.size(); j++) {
-             //       if (list.size() == 1) {
-                        //  centipede.getCentipedeList().get(0).setPosition(centipede.getCentipedeList().get(0).getX() - centipede.getCentipedeList().get(0).getSpeed() * delta, centipede.getCentipedeList().get(0).getY());
-
-              //      } else {
-
-                //        list.get(j).setPosition(list.get(0).getX() - j, list.get(j).getY());
-               //     }
-             //   }
+            
                 currentFrame = animation.getKeyFrame(stateTime + 8);
 
-                //  currentFrame.flip(!currentFrame.isFlipX(), currentFrame.isFlipY());
-
-              //  setPosition(getX() + speed * delta, getY());
-
-
-                //   for(int i=0;i<list.size();i++)
-                //  {
-
-                //     if(getBoundingRectangle().overlaps(list.get(i).getBoundingRectangle()))
-                //      {
-                //        setX(getX()-1);
-                //     }
-
-                //  }
-
-
-                //   for(int i=0;i<frames.length;i++)
-                // {
-
-                //   for(int i=0;i<frames.length;i++)
-                //  {
-                //       frames[i].flip(!frames[i].isFlipX(), frames[i].isFlipY());
-
-                //    }
-
-
-                //}
-                // currentFrame.flip(true,false);
+             
 
                 if (getX() > 19) {
                     previousState = currentState;
@@ -203,20 +104,9 @@ public class CentipedeHead extends Sprite {
                 //for (int j = 0; j < list.size(); j++) {
 
                 setPosition(getX(),getY()-1);
-                       // list.get(j).setPosition(list.get(j).getX(), list.get(j).getY()-1);
-                //    }
-
-
-                // if(downMovCounter>DOWN_MOVEMENT){
-                //downMovCounter=0;
-
-                //  delay+=Gdx.graphics.getDeltaTime();
-
-                //  if(delay>=0.1) {
-
+                     
                 currentState = previousState == State.LEFT ? State.RIGHT : State.LEFT;
                 delay = 0;
-                //}
             }
 
 
@@ -235,18 +125,7 @@ public class CentipedeHead extends Sprite {
                         previousState = currentState;
                         currentState = State.DOWN;
                     }
-/*
-       if (getCurrentState() == State.LEFT) {
-           for(int i=0;i<frames.length;i++)
-           {
-                frames[i].flip(true,false);
-            }
-       } else if (getCurrentState() == State.RIGHT) {
-            for (int i = 0; i < frames.length; i++) {
-               frames[i].flip(false, false);
-          }
-        }
-*/
+
 
 
                 }
