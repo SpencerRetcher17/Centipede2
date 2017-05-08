@@ -148,6 +148,7 @@ public MainMenu(Game game)
 
     @Override
     public void dispose() {
+        Gdx.input.setInputProcessor(null);
 
     }
 }

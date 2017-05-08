@@ -12,5 +12,8 @@ public class AndroidLauncher extends AndroidApplication {
 		super.onCreate(savedInstanceState);
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
 		initialize(new Centipede(), config);
+		config.useCompass=false;
+		config.useAccelerometer=false;
+
 	}
 }
