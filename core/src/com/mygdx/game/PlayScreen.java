@@ -158,17 +158,40 @@ public class PlayScreen implements Screen {
 
 
 
-    
+        /*
+
+        ex2 = new CentipedeHead(frames, new Vector2(18, 24), new Vector2(1, 1));
+        ex4 = new CentipedeHead(frames, new Vector2(17, 24), new Vector2(1, 1));
+        ex5 = new CentipedeHead(frames, new Vector2(16, 24), new Vector2(1, 1));
+        ex6 = new CentipedeHead(frames, new Vector2(15, 24), new Vector2(1, 1));
+        ex7 = new CentipedeHead(frames1, new Vector2(14, 24), new Vector2(1, 1));
+
+
+        hello.add(ex2);
+        hello.add(ex4);
+        hello.add(ex5);
+        hello.add(ex6);
+        hello.add(ex7);
+*/
+
             centipede = new SpawnCentipede(frames, frames1);
+            //   centipede.fill();
             pilot = new Ship(batch, cur2.getMushrooms(), centipede.getCentipedeList(), splitTiles[10][0], new Vector2(5, 0), new Vector2(1, 1));
-           
+            // ex7 = new Bullet(splitTiles[10][1], pilot, new Vector2(1, 1));
+            // cur = new Bullet(splitTiles[10][1], new Vector2(pilot.getX(), pilot.getY()), new Vector2(1, 1));
 
             cam = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
             cam.setToOrtho(false, 20, 25);
+            // ex3=new SpawnCentipede(SpawnCentipede.State.LEVEL1,2,24,true);
             sr = new ShapeRenderer();
+            //  mushroom = new Mushroom(new Vector2(100, 100), new Vector2(50, 100));
+            //mushroom1 = new Mushroom(new Vector2(500, 100), new Vector2(50, 100));
             mushrooms = new ArrayList<Mushroom>();
             enemies = new ArrayList<Enemy>();
-      
+            //    mushrooms.add(mushroom);
+            //  mushrooms.add(mushroom1);
+
+            //image=new Sprite(splitTiles[0][0]);
 
             if (Gdx.files.local("player.dat").exists()) {
                 try {
@@ -196,6 +219,7 @@ public class PlayScreen implements Screen {
             tiles = new ArrayList<Tile>();
 
 
+            //sound=Gdx.audio.newMusic(Gdx.files.internal("sound.mp3"));
 
             map = new TmxMapLoader().load("centipedeMap.tmx");
             renderer = new OrthogonalTiledMapRenderer(map, 1 / 8f);
@@ -203,15 +227,25 @@ public class PlayScreen implements Screen {
             cell = new TiledMapTileLayer.Cell();
             Texture tilesImage = new Texture(Gdx.files.internal("tile.png"));
             TextureRegion[][] splitTiles = TextureRegion.split(tilesImage, 8, 8);
+            // Texture tilesImage1 = new Texture(Gdx.files.internal("tile2.png"));
             TextureRegion[][] splitTiles1 = TextureRegion.split(tilesImage, 8, 8);
             bounds = new ArrayList<Rectangle>();
-         
+            // ex=new CentipedeBody(splitTiles[0][0],new Vector2(0,0),new Vector2(1,1));
+         //   ex2 = new CentipedeHead(frames, new Vector2(18, 24), new Vector2(1, 1));
+          //  ex4 = new CentipedeHead(frames, new Vector2(17, 24), new Vector2(1, 1));
+
 
             cur2.spawnMushrooms(map);
 
 
 
 
+/*
+
+        }
+        Texture hello=frames1[5].getTexture();
+
+*/
 
 
         }
@@ -231,7 +265,9 @@ public class PlayScreen implements Screen {
         //  pilot.update(map, pilot);
 
 
-       
+        //ex.update();
+        //cam.position.set(player.getPosition().x + (player.getCurrentFrame().getRegionWidth() / 2), player.getPosition().y + (player.getCurrentFrame().getRegionHeight() / 2), 0);
+        batch.setProjectionMatrix(cam.combined);
         cam.update();
 
 
@@ -256,10 +292,26 @@ public class PlayScreen implements Screen {
         }
 
         batch.begin();
+/*
+            if(ex2.getBoundingRectangle().overlaps(bounds.get(i))||cur.getCell(Math.round(ex2.getX()),Math.round(ex2.getY())).getTile().getProperties().containsKey("mushroom"))
+            {
+                Gdx.app.log("Animation","Collisions");
+                ex2.setPreviousState(ex2.getCurrentState());
+                ex2.setCurrentState(CentipedeHead.State.DOWN);
+                //sound.play();
+                //music.isLooping();
+                //player.reAdjust();
+
+            }
+   */
 
 
+        //   for(int i=0;i<frames1.length;i++)
+        //   {
 
-      
+        //  batch.draw(frames1[i],i,10,1,1);
+
+        //  }
 
 
         for (int i = 0; i < centipede.getCentipedeList().size(); i++) {
@@ -268,8 +320,21 @@ public class PlayScreen implements Screen {
             batch.draw(centipede.getCentipedeList().get(i).getCurrentFrame(), centipede.getCentipedeList().get(i).getX(), centipede.getCentipedeList().get(i).getY(), centipede.getCentipedeList().get(i).getWidth(), centipede.getCentipedeList().get(i).getHeight());
         }
 
+//batch.draw(splitTiles[0][1],5,5,1,1);
+
+        //   delay -= Gdx.graphics.getDeltaTime();
+        // if (delay <= 0) {
+        //   delay += 0.5;
+        //batch.draw(centipede.getCentipedeList().get(i).getCurrentFrame(), centipede.getCentipedeList().get(i).getX(), centipede.getCentipedeList().get(i).getY(), centipede.getCentipedeList().get(i).getWidth(), centipede.getCentipedeList().get(i).getHeight());
+        //}
 
 
+        //   }
+
+        // batch.draw(ex4, ex4.getX(), ex4.getY(), ex4.getWidth(), ex4.getHeight());
+        // batch.draw(ex2, ex2.getX(), ex2.getY(), ex2.getWidth(), ex2.getHeight());
+
+        //batch.draw(ex7,ex7.getX(),ex7.getY(),ex7.getWidth(),ex7.getHeight());
         batch.draw(pilot, pilot.getX(), pilot.getY(), pilot.getWidth(), pilot.getHeight());
 
         for (int i = 0; i < pilot.getBulletList().size(); i++) {
@@ -313,6 +378,10 @@ public class PlayScreen implements Screen {
             }
 
 
+/*
+    //   ex5.update(map);
+    // ex7.update(map);
+*/
 
 
             stage.draw();

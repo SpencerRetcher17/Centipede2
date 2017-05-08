@@ -49,19 +49,6 @@ CentipedeHead head;
         previousState=State.LEFT;
         speed=6f;
 
-        //  frames2=new TextureRegion[frames.length];
-
-        // for(int i=0;i<4;i++)
-        //{
-        //  frames[i]=splitTiles[0][i];
-        //frames[i+4]=splitTiles[1][i];
-
-        //}
-        //for(int j=0;j<frames2.length;j++)
-        //{
-        //  frames2[j]=frames[j];
-        //frames2[j].flip(true, false);
-
 
 
 
@@ -90,26 +77,6 @@ CentipedeHead head;
              setPosition(getX()-speed*delta,getY());
 
 
-         //   for(int i=list.size();i>0;i--)
-        //    {
-            // setPosition(head.getX()+i,getY());
-          //  }
-       //     setPosition(getX() - speed * delta, getY());
-
-
-            //     {
-            //         setX(getX()+1);
-            //      }
-
-            //  }
-
-            //  for(int i=0;i<frames.length;i++)
-            //   {
-            //      frames[i].flip(frames[i].isFlipX(), frames[i].isFlipY());
-
-            //  }
-            //currentFrame.flip(false,false);
-            //    currentFrame.flip(currentFrame.isFlipX(), currentFrame.isFlipY());
 
             currentFrame = animation.getKeyFrame(stateTime);
 
@@ -126,34 +93,11 @@ CentipedeHead head;
 
             currentFrame = animation.getKeyFrame(stateTime + 8);
 
-            //  currentFrame.flip(!currentFrame.isFlipX(), currentFrame.isFlipY());
 
             setPosition(getX() + speed * delta, getY());
 
 
-            //   for(int i=0;i<list.size();i++)
-            //  {
 
-            //     if(getBoundingRectangle().overlaps(list.get(i).getBoundingRectangle()))
-            //      {
-            //        setX(getX()-1);
-            //     }
-
-            //  }
-
-
-            //   for(int i=0;i<frames.length;i++)
-            // {
-
-            //   for(int i=0;i<frames.length;i++)
-            //  {
-            //       frames[i].flip(!frames[i].isFlipX(), frames[i].isFlipY());
-
-            //    }
-
-
-            //}
-            // currentFrame.flip(true,false);
 
             if (getX() > 19) {
                 previousState = currentState;
