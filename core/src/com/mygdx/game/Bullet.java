@@ -36,17 +36,18 @@ public class Bullet extends Sprite {
     TextureRegion image;
     LinkedList<CentipedeHead> list;
     Sound hit=Gdx.audio.newSound(Gdx.files.internal("hit.wav"));
+    Ui userInterface;
 
-
-    public Bullet(TextureRegion image1, LinkedList<CentipedeHead> list, Ship player, Vector2 size) {
+    public Bullet(TextureRegion image1, LinkedList<CentipedeHead> list, Ship player, Vector2 size,Ui userInterface) {
         super(new TextureRegion(image1));
         setX(player.getX());
         setY(player.getY() + 1);
         setSize(size.x, size.y);
-        speed = 25f;
+        speed = 30f;
         this.player = player;
         image1 = new TextureRegion();
         this.list=list;
+        this.userInterface=userInterface;
     }
 
 
@@ -117,6 +118,8 @@ public class Bullet extends Sprite {
 
                                 cell.setTile(new StaticTiledMapTile(splitTiles[2][11]));
                                 cell.getTile().getProperties().remove("mushroom");
+                                userInterface.setScore(userInterface.getScore()+1);
+
                             }
 
 
@@ -152,6 +155,7 @@ public class Bullet extends Sprite {
                     cell.setTile(new StaticTiledMapTile(splitTiles[0][8]));
                     cell.getTile().getProperties().put("mushroom", true);
                     list.remove(j);
+                    userInterface.setScore(userInterface.getScore()+50);
 
 
                 }

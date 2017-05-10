@@ -88,6 +88,7 @@ public class PlayScreen implements Screen {
     SpawnCentipede centipede;
     float delay=0;
     boolean isSpawned;
+    Ui userInterface;
 
     public PlayScreen(Game game) {
         this.game = game;
@@ -100,6 +101,10 @@ public class PlayScreen implements Screen {
     @Override
     public void show() {
         bulletList = new ArrayList<Bullet>();
+
+        userInterface=new Ui();
+
+     /*
         stage = new Stage();
         font = new BitmapFont(Gdx.files.internal("font.fnt"), false);
         style = new Label.LabelStyle(font, Color.RED);
@@ -120,6 +125,7 @@ public class PlayScreen implements Screen {
         image2.setPosition(image.getX() + 20, label.getY());
         image2.setSize(24, 24);
         stage.addActor(image2);
+     */
         batch = new SpriteBatch();
         cur2 = new Mushroom(map);
         hello = new ArrayList<CentipedeHead>();
@@ -175,8 +181,8 @@ public class PlayScreen implements Screen {
 */
 
             centipede = new SpawnCentipede(frames, frames1);
-            //   centipede.fill();
-            pilot = new Ship(batch, cur2.getMushrooms(), centipede.getCentipedeList(), splitTiles[10][0], new Vector2(5, 0), new Vector2(1, 1));
+            //   centipede.fill();,
+            pilot = new Ship(batch, cur2.getMushrooms(), centipede.getCentipedeList(), splitTiles[10][0], new Vector2(5, 0), new Vector2(1, 1),userInterface);
             // ex7 = new Bullet(splitTiles[10][1], pilot, new Vector2(1, 1));
             // cur = new Bullet(splitTiles[10][1], new Vector2(pilot.getX(), pilot.getY()), new Vector2(1, 1));
 
@@ -261,7 +267,8 @@ public class PlayScreen implements Screen {
         renderer.render();
         player.update();
 
-
+        userInterface.action();
+        userInterface.updateScore();
         //  pilot.update(map, pilot);
 
 
@@ -343,6 +350,8 @@ public class PlayScreen implements Screen {
         }
 
 
+
+
         batch.end();
 
 
@@ -373,7 +382,7 @@ public class PlayScreen implements Screen {
 
             if (centipede.getCentipedeList().size() == 0) {
 
-                game.setScreen(new levelTwo((game)));
+          //      game.setScreen(new levelTwo((game)));
 
             }
 
@@ -383,8 +392,8 @@ public class PlayScreen implements Screen {
     // ex7.update(map);
 */
 
-
-            stage.draw();
+            userInterface.draw();
+           // stage.draw();
 
         }
 

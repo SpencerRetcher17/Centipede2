@@ -14,7 +14,6 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -44,11 +43,11 @@ public class Ship extends Sprite implements InputProcessor {
     ArrayList<Bullet> bulletList;
     ArrayList<Mushroom> mushroomsList;
     LinkedList<CentipedeHead>list;
-
+    Ui userInterFace;
 
     Sound shoot=Gdx.audio.newSound(Gdx.files.internal("shoot.wav"));
 
-    public Ship(SpriteBatch batch,ArrayList<Mushroom>mushroomsList,LinkedList<CentipedeHead>list,TextureRegion image, Vector2 position, Vector2 size) {
+    public Ship(SpriteBatch batch,ArrayList<Mushroom>mushroomsList,LinkedList<CentipedeHead>list,TextureRegion image, Vector2 position, Vector2 size,Ui userInterface) {
         super(new TextureRegion(image));
         setPosition(position.x,position.y);
         setSize(size.x,size.y);
@@ -60,6 +59,7 @@ public class Ship extends Sprite implements InputProcessor {
 this.mushroomsList=mushroomsList;
         bulletList=new ArrayList<Bullet>();
 this.list=list;
+        this.userInterFace=userInterface;
     }
 
     public void update(TiledMap map,Ship player) {
@@ -74,6 +74,8 @@ this.list=list;
 
         }
 
+        
+
         float delta = Gdx.graphics.getDeltaTime();
 
             if(currentState==State.FIRE)
@@ -83,9 +85,9 @@ this.list=list;
 
                         fireDelay -= Gdx.graphics.getDeltaTime();
                         if (fireDelay <= 0) {
-                            bulletList.add(new Bullet(splitTiles[10][1],list,player,new Vector2(1,1)));
+                            bulletList.add(new Bullet(splitTiles[10][1],list,player,new Vector2(1,1),userInterFace));
                             shoot.play();
-                            fireDelay += 0.3;
+                            fireDelay += 0.2;
                         }
                         else
                         {

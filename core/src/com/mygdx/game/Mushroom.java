@@ -71,10 +71,10 @@ this.map=map;
 
 
         for (int i = 0; i < 20; i++) {
-            for (int j = 2; j < 21; j++) {
+            for (int j = 2; j < 20; j++) {
                 TiledMapTileLayer cur = (TiledMapTileLayer) map.getLayers().get(2);
                 TiledMapTileLayer.Cell cell = new TiledMapTileLayer.Cell();
-                int R = (int) ((Math.random() * (11 - 0) + 0));
+                int R = (int) ((Math.random() * (9 - 0) + 0));
                 if (cur.getCell(i, j) != null) {
                     if (R == 0) {
                         cell = cur.getCell(i, j);
